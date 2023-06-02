@@ -8,7 +8,7 @@ const port = 2804 || process.env.PORT;
 // ***************************************************
 
 // server static files to the client
-app.use(express.static("media"));
+app.use(express.static("public"));
 
 // ***************************************************
 // Middleware Part End Here
