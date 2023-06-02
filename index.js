@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 
 import profileRouter from "./routes/profileRouter.js";
 import chatRouter from "./routes/chatRouter.js";
+import corsProtection from "./Protection/corsOption.js";
 
 const app = express();
 const port = 2804 || process.env.PORT;
@@ -14,6 +15,9 @@ const port = 2804 || process.env.PORT;
 
 // body parser parse the upcoming json body
 app.use(bodyParser.json());
+
+// cors protection
+app.use(corsProtection);
 
 // server static files to the client
 app.use("/", express.static("public"));
