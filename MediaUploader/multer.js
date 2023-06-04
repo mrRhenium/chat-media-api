@@ -4,23 +4,22 @@ import syncFs from "fs";
 
 const storage = multer.diskStorage({
   destination: async (req, file, next) => {
-    const imgId = req.body.imgId;
     const userId = req.body.userId;
 
     try {
       //
 
-      let exist = syncFs.existsSync(`public/assets/${userId}/profile/${imgId}`);
+      let exist = syncFs.existsSync(`public/assets/${userId}/profile`);
 
       if (exist) {
-        await fs.rm(`public/assets/${userId}/profile/${imgId}`, {
+        await fs.rm(`public/assets/${userId}/profile`, {
           recursive: true,
         });
 
         console.log("previous Image is cleared");
       }
 
-      await fs.mkdir(`public/assets/${userId}/profile/${imgId}`, {
+      await fs.mkdir(`public/assets/${userId}/profile`, {
         recursive: true,
       });
 
@@ -34,14 +33,14 @@ const storage = multer.diskStorage({
       });
     }
 
-    next(null, `public/assets/${userId}/profile/${imgId}`);
+    next(null, `public/assets/${userId}/profile`);
   },
 
   filename: (req, file, next) => {
-    const fileExt = file.originalname.split(".")[1];
+    const fileName = file.originalname.split(" ").join("");
 
-    next(null, file.originalname);
-    // next(null, `profilePic.${fileExt}`);
+    // next(null, file.originalname);
+    next(null, fileName);
   },
 });
 

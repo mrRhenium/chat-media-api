@@ -17,23 +17,14 @@ profileRouter.post("/", upload.single("profilePic"), (req, res) => {
   });
 });
 
-// PUT Route
-profileRouter.put("/", upload.single("profilePic"), (req, res) => {
-  res.json({
-    status: true,
-    msg: "Successfully!: Profile Picture is Updated.",
-  });
-});
-
 // DELETE Route
 profileRouter.delete("/", async (req, res) => {
   try {
     //
 
     const userId = req.query.userId;
-    const imgId = req.query.imgId;
 
-    await fs.rm(`public/assets/${userId}/profile/${imgId}`, {
+    await fs.rm(`public/assets/${userId}/profile`, {
       recursive: true,
     });
 
