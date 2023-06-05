@@ -18,11 +18,18 @@ profileRouter.get("/", (req, res) => {
 });
 
 // POST Route
-profileRouter.post("/", upload.single("profilePic"), (req, res) => {
-  res.json({
-    status: true,
-    msg: "Successfully!: Profile Picture is Uploaded.",
-  });
+profileRouter.post("/", upload.single("profilePic"), async (req, res) => {
+  try {
+    res.json({
+      status: true,
+      msg: "Successfully!: Profile Picture is Uploaded.",
+    });
+  } catch (err) {
+    res.json({
+      status: false,
+      msg: `Nitesh Yadav ${err}`,
+    });
+  }
 });
 
 // DELETE Route
