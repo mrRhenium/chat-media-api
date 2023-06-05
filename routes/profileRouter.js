@@ -9,6 +9,14 @@ const profileRouter = express.Router();
 // Profile Page Routes Start Here
 // ***************************************************
 
+// GET Route
+profileRouter.get("/", (req, res) => {
+  res.json({
+    status: true,
+    msg: "Successfully!: Profile Picture is Shown",
+  });
+});
+
 // POST Route
 profileRouter.post("/", upload.single("profilePic"), (req, res) => {
   res.json({
