@@ -18,7 +18,8 @@ profileRouter.get("/", (req, res) => {
 });
 
 // POST Route
-profileRouter.post("/", upload.single("profilePic"), async (req, res) => {
+// upload.single("profilePic"),
+profileRouter.post("/", async (req, res) => {
   try {
     res.json({
       status: true,
