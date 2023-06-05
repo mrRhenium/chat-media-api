@@ -12,7 +12,7 @@
   "routes": [
     {
       "src": "/media/profile",
-      "dest": "./index.js",
+      "dest": "index.js",
       "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Origin": "*"
@@ -22,5 +22,6 @@
       "src": "/(.+)",
       "dest": "public/$1"
     }
-  ]
+  ],
+  "installCommand": "npm install"
 }
